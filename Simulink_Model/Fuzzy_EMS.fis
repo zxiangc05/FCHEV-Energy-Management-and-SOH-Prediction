@@ -1,0 +1,51 @@
+[System]
+Name='fuzzy_ems'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=12
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='SOH'
+Range=[0 1]
+NumMFs=3
+MF1='PS':'gauss2mf',[0.1699 -0.05 0.1699 0.05]
+MF2='PM':'gauss2mf',[0.1699 0.45 0.1699 0.55]
+MF3='PB':'gauss2mf',[0.1699 0.95 0.1699 1.05]
+
+[Input2]
+Name='P_req'
+Range=[-40 60]
+NumMFs=4
+MF1='N':'gauss2mf',[11.32 -43.33 11.32 -36.67]
+MF2='PS':'gauss2mf',[11.32 -10 11.32 -3.333]
+MF3='PM':'gauss2mf',[11.32 23.33 11.32 30]
+MF4='PB':'gauss2mf',[11.32 56.67 11.32 63.33]
+
+[Output1]
+Name='P_cmd'
+Range=[0 50]
+NumMFs=3
+MF1='mf1':'trimf',[-20.83 0 20.83]
+MF2='mf2':'trimf',[4.167 25 45.83]
+MF3='mf3':'trimf',[29.17 50 70.83]
+
+[Rules]
+1 4, 3 (1) : 1
+2 1, 1 (1) : 1
+2 3, 2 (1) : 1
+2 4, 3 (1) : 1
+1 3, 3 (1) : 1
+1 2, 2 (1) : 1
+1 1, 2 (1) : 1
+3 1, 1 (1) : 1
+3 2, 1 (1) : 1
+3 3, 1 (1) : 1
+3 4, 2 (1) : 1
+2 1, 1 (1) : 1
