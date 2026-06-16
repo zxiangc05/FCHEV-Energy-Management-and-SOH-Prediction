@@ -1,4 +1,3 @@
-这份 `README.md` 文档专门为你的 GitHub 仓库设计，结构严谨，完整覆盖了项目的三个核心阶段（物理建模、控制策略、AI 预测）。你可以直接复制以下 Markdown 代码，稍作修改（如替换图片路径和你的姓名）后贴入 GitHub。
 
 ---
 
@@ -105,8 +104,3 @@ Using the WLTC driving cycle, real-time operating data (Current, Voltage, Net Po
 *Developed by [Your Name/GitHub Handle]. Contact: [Your Email] for academic discussions or collaborations.*
 
 ---
-
-### 💡 提示：
-在上传代码到 GitHub 前，请务必使用截图工具，将你跑出来的**WLTC 5联图示波器截图**和**红蓝对比预测图**保存到 `Images` 文件夹中，并将它们的路径替换到上面的目录结构说明中。这会极大增强该仓库的直观展示效果。
-Fletcher, T., et al. (2016). An Energy Management Strategy to concurrently optimise fuel consumption and PEM fuel cell degradation in a hybrid vehicle. International Journal of Hydrogen Energy.
-Developed by [Your Name/GitHub Handle]. Contact: [Your Email] for academic discussions or collaborations.
