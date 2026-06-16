@@ -12,8 +12,7 @@ The project aims to develop a health-conscious Energy Management System (EMS) an
 The project is divided into three main phases:
 1. **High-Fidelity Plant Modeling**: Electrochemical, thermodynamic, and degradation modeling.
 2. **Hierarchical Control Strategy**: Fuzzy Logic EMS + Hysteresis Safety Override + PI Inner-loop.
-3. **Data-Driven Prognostics**: LSTM-based time-series forecasting using difference prediction ($\Delta$SOH).
-
+3. **Data-Driven Prognostics**: LSTM-based time-series forecasting using difference prediction ($\Delta SOH$ ).
 ---
 
 ## 🛠️ Phase 1: High-Fidelity Plant Modeling (Simulink)
@@ -25,7 +24,9 @@ Unlike simplified first-order delay models, this plant model incorporates real-w
     A second-order polynomial is used to model the steady-state parasitic power of the compressor. A continuous transfer function $G(s) = \frac{1}{\tau_c s + 1}$ is applied to replicate the mechanical rotor inertia. This successfully reproduces the **"Oxygen Starvation (Power Sag)"** effect during severe transient load changes.
 *   **Empirical Degradation Model**: 
     The SOH degradation rate ($\dot{D}$) is evaluated considering both steady-state deviation and transient stress:
-    $$ \dot{D} = [k_0 + k_1(I - I_{opt})^2] + k_{trans} \left| \frac{dI}{dt} \right| $$
+
+      $\dot{D}$ = $[k_0 + k_1(I - I_{opt})^2]$ + $k_{trans} \left| \frac{dI}{dt} \right|$
+    
     A low-pass filter is applied to the derivative term to eliminate non-physical Dirac impulses during step changes.
 
 ---
@@ -48,7 +49,7 @@ Using the WLTC driving cycle, real-time operating data (Current, Voltage, Net Po
 
 ### LSTM Architecture & Difference Prediction Strategy
 *   **Addressing Domain Shift**: Traditional absolute-value predictions often fail (extrapolation failure) when the test set SOH values are lower than the training set. 
-*   **Delta SOH ($\Delta$SOH)**: The model is refactored to predict the *degradation rate* (single-step difference of SOH) rather than the absolute SOH. 
+*   **Delta SOH ($\Delta SOH$ )**: The model is refactored to predict the *degradation rate* (single-step difference of SOH) rather than the absolute SOH. 
 *   **Network Design**: A 2-layer Long Short-Term Memory (LSTM) network with Dropout and L2 Regularization (Weight Decay) to prevent overfitting. `StandardScaler` (Z-score normalization) is used for feature scaling.
 *   **Results**: The absolute SOH trajectory is reconstructed via cumulative summation (`np.cumsum`) of the predicted $\Delta$SOH. The model achieves high-fidelity tracking on the unseen test dataset with negligible cumulative drift.
 
@@ -101,6 +102,6 @@ Using the WLTC driving cycle, real-time operating data (Current, Voltage, Net Po
 *   Fletcher, T., et al. (2016). An Energy Management Strategy to concurrently optimise fuel consumption and PEM fuel cell degradation in a hybrid vehicle. *International Journal of Hydrogen Energy*.
 
 ---
-*Developed by [Your Name/GitHub Handle]. Contact: [Your Email] for academic discussions or collaborations.*
+*Developed by [Cheng Zixiang]. Contact: [cheng.zx.0329@gmail.com] for academic discussions.*
 
 ---
